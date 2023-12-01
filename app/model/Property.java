@@ -1,0 +1,68 @@
+package app.model;
+
+import app.utils.Level;
+import app.utils.Type;
+
+public class Property {
+    private String name;
+    private int rentBase;
+    private int upgradeValue;
+    private int idPlayer;
+    private Level level;
+    private Type type;
+
+    Property(String name, int rentBase, int upgradeValue, int idPlayer, Type type){
+        this.name = name;
+        this.rentBase = rentBase;
+        this.upgradeValue = upgradeValue;
+        this.idPlayer = idPlayer;
+        this.type = type;
+        level = Level.BASIC;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getRentBase() {
+        return rentBase;
+    }
+
+    public int getUpgradeValue() {
+        return upgradeValue;
+    }
+
+    public int getIdPlayer() {
+        return idPlayer;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setRentBase(int rentBase) {
+        this.rentBase = rentBase;
+    }
+
+    public void setUpgradeValue(int upgradeValue) {
+        this.upgradeValue = upgradeValue;
+    }
+
+    public void setIdPlayer(int idPlayer) {
+        this.idPlayer = idPlayer;
+    }
+
+    public void updateLevel(){
+        level = level.NextLevel();
+    }
+
+    public int rentalValue(){
+        return (rentBase * type.type * level.level);
+    }
+
+    public String toString() {
+        return  "\n\nName = " + name +
+                "\nUpgradeValue = " + upgradeValue +
+                "\nidPlayer = " + idPlayer;
+    }
+}
