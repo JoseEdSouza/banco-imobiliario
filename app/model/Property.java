@@ -4,7 +4,7 @@ import app.interfaces.House;
 import app.utils.Level;
 import app.utils.Type;
 
-public class Property implements House {
+public class Property extends BoardHouse {
     private String name;
     private int rentBase;
     private int upgradeValue;
