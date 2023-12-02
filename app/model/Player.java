@@ -10,8 +10,9 @@ public class Player {
 
     public Player(String name) {
         this.name = name;
-        this.id = actualId++;
+        this.id = actualId + 1 ;
         this.skip = 0;
+        actualId++;
     }
 
     public int getId() {

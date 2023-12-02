@@ -12,11 +12,11 @@ public class Property implements House {
     private Level level;
     private final Type type;
 
-    Property(String name, int rentBase, int upgradeValue, int idPlayer, Type type){
+    public Property(String name, int rentBase, int upgradeValue, Type type){
         this.name = name;
         this.rentBase = rentBase;
         this.upgradeValue = upgradeValue;
-        this.idPlayer = idPlayer;
+        this.idPlayer = 0;
         this.type = type;
         level = Level.BASIC;
     }
