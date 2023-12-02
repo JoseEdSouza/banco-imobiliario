@@ -1,6 +1,7 @@
 package app.model;
 
-public class Share {
+import app.interfaces.House;
+public class Share extends BoardHouse{
     public String name;
     public int shareValue;
     public int playerId = 0;
@@ -10,6 +11,10 @@ public class Share {
     }
     public int calculateProfit(int diceValue){
         return this.shareValue * diceValue;
+    }
+
+    @Override
+    public void takeAction(Player player) {
     }
 
     @Override

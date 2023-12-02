@@ -2,7 +2,7 @@ package app.model;
 
 import app.interfaces.House;
 
-public class GainEvent implements House {
+public class GainEvent extends BoardHouse {
 
     public void takeAction(Player player){
         player.receive(200000);
