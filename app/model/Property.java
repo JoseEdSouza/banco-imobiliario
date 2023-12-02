@@ -1,15 +1,16 @@
 package app.model;
 
+import app.interfaces.House;
 import app.utils.Level;
 import app.utils.Type;
 
-public class Property {
+public class Property implements House {
     private String name;
     private int rentBase;
     private int upgradeValue;
     private int idPlayer;
     private Level level;
-    private Type type;
+    private final Type type;
 
     Property(String name, int rentBase, int upgradeValue, int idPlayer, Type type){
         this.name = name;
@@ -58,6 +59,11 @@ public class Property {
 
     public int rentalValue(){
         return (rentBase * type.type * level.level);
+    }
+
+    @Override
+    public void takeAction(Player player) {
+
     }
 
     public String toString() {
