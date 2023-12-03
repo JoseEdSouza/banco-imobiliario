@@ -22,6 +22,7 @@ public class Player {
     public int getSkip() {
         return this.skip;
     }
+    public void setSkip(int value){this.skip = value;}
 
     public void payPlayer(int value, Player receiver) {
         if (value >= this.balance) {
@@ -55,7 +56,7 @@ public class Player {
         }
     }
 
-    public void notifica(){
+    public void notifies(){
 
     }
 

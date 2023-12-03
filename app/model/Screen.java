@@ -1,10 +1,11 @@
 package app.model;
 
+import app.interfaces.ScreenObserver;
 import app.utils.OsUtils;
 
 import java.io.IOException;
 
-public class Screen {
+public class Screen implements ScreenObserver {
     private String content;
     private String info;
     private String options;
@@ -53,4 +54,8 @@ public class Screen {
     }
 
 
+    @Override
+    public void updateState() {
+
+    }
 }
