@@ -1,28 +1,40 @@
-Açude do Cedro
-Praça do Leão
-Praça da Estação
-Centro Cultural Rachel de Querioz
-Chalé da Pedra
-Rua Basilio Pinto
-Rua Rui Barbosa
-Av Plácido Castelo
-Av José Caetano Almeida
-Av josé de Freitas Queiroz
-Bairro Centro
-Bairro Combate
-Bairro Cedro
-Bairro Campo Velho
-Bairro Planalto Renascer
-Pedra do Cruzeiro
-Pedra da Galinha Chova
-Pedra da Baleia
-Pedra Faladeira
-Lagoa dos Monólitos
-Parque de Exposição Valdir de Couto
-Santuário N.Sra Imaculada
-Companhia Petrolifera
-Enel
-Pontocom
-Companhia de Mineração
-Cagece
-Crédito de carbono
+GEInicio
+PPAçude do Cedro
+PPPraça do Leão
+SHCompanhia Petrolifera
+PPPraça da Estação
+PPCentro Cultural Rachel de Querioz
+LSSorte/Revés
+PPChalé da Pedra
+GERestituição de Imposto de renda - Evento Ganho
+PPRua Basilio Pinto
+PVPrisao
+LSSorte/Revés
+PPRua Rui Barbosa
+PPAv Plácido Castelo
+SHEnel
+PPAv José Caetano Almeida
+LEReceita Federal
+PPAv josé de Freitas Queiroz
+PPBairro Centro
+PPBairro Combate
+HDFeriado
+PPBairro Cedro
+SHCagece
+SHCompanhia de Mineração
+LSSorte/Revés
+PPBairro Campo Velho
+PPBairro Planalto Renascer
+LSSorte/Revés
+PPPedra do Cruzeiro
+SHPontocom
+PREntre no Camburão
+PPPedra da Galinha Chova
+LSSorte/Revés
+PPPedra da Baleia
+PPPedra Faladeira
+PPLagoa dos Monólitos
+SHCrédito de carbono
+PPParque de Exposição Valdir de Couto
+LSSorte/Revés
+PPSantuário N.Sra Imaculada
