@@ -1,5 +1,6 @@
 package app.model;
 
+import app.houses.HouseFactory;
 import app.interfaces.IHouse;
 import java.util.ArrayList;
 import java.util.HashMap;

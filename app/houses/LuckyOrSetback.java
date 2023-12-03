@@ -8,11 +8,11 @@ import java.util.Random;
 public class LuckyOrSetback implements IHouse {
 
     private Random random;
-
-    public LuckyOrSetback(){
+    private final String name;
+    public LuckyOrSetback(String name){
         this.random = new Random();
+        this.name = name;
     }
-
     @Override
     public String getName() {
         if(random.nextInt() % 2 == 0){
