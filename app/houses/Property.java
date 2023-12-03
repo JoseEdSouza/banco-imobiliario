@@ -1,19 +1,22 @@
-package app.model;
+package app.houses;
 
 import app.interfaces.IHouse;
+import app.model.Player;
 import app.utils.Level;
 import app.utils.Type;
 
-public class Property extends IHouse {
-    private String name;
-    private int rentBase;
-    private int upgradeValue;
+public class Property implements IHouse {
+    private final String name;
+    private final int buyValue;
+    private final int rentBase;
+    private final int upgradeValue;
     private int idPlayer;
     private Level level;
     private final Type type;
 
-    public Property(String name, int rentBase, int upgradeValue, Type type){
+    public Property(String name, int buyValue, int rentBase, int upgradeValue, Type type){
         this.name = name;
+        this.buyValue = buyValue;
         this.rentBase = rentBase;
         this.upgradeValue = upgradeValue;
         this.idPlayer = 0;
@@ -23,6 +26,10 @@ public class Property extends IHouse {
 
     public String getName() {
         return name;
+    }
+
+    public int getBuyValue() {
+        return buyValue;
     }
 
     public int getRentBase() {
@@ -56,14 +63,6 @@ public class Property extends IHouse {
         if(getIdPlayer() == 0){
             player.buyProperty(this);
             setIdPlayer(player.getId());
-        }
-        else{
-            if(getIdPlayer() == player.getId()){
-                this.level = this.level.NextLevel();
-                player.pay(getUpgradeValue());
-            }
-            else {
-            }
         }
     }
 }

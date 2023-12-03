@@ -1,6 +1,8 @@
 package app.model;
 
-public class LostEvent{
+import app.interfaces.IHouse;
+
+public class LostEvent implements IHouse {
 
     public void takeAction(Player player) {
         player.pay(200000);

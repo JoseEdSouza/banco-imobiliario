@@ -1,7 +1,9 @@
 package app.model;
 
 
-public class GainEvent{
+import app.interfaces.IHouse;
+
+public class GainEvent implements IHouse {
 
     public void takeAction(Player player)
     {

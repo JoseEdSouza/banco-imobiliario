@@ -1,5 +1,7 @@
 package app.model;
 
+import app.houses.Property;
+
 public class Player {
     private static int actualId = 0;
     private final int id;
@@ -51,12 +53,22 @@ public class Player {
     }
 
     public void buyProperty(Property p) {
-        if (this.balance < p.rentalValue()){
+        if (this.balance < p.getBuyValue()){
             System.out.println("Sem dinheiro o suficiente.");
         }
         else{
             p.setIdPlayer(this.id);
-            this.balance -= p.rentalValue();
+            this.balance -= p.getBuyValue();
+        }
+    }
+
+    public void buyShare(Share s) {
+        if (this.balance < s.getBuyValue()){
+            System.out.println("Sem dinheiro o suficiente.");
+        }
+        else{
+            s.setPlayerId(this.id);
+            this.balance -= s.getBuyValue();
         }
     }
 

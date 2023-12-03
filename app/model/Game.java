@@ -11,6 +11,7 @@ public class Game {
         this.players = new ArrayList<Player>();
         this.board = null;
     }
+
     public void starts(Board board){
         this.board = board.getInstance();
     }
