@@ -1,6 +1,7 @@
 package app.model;
 
 import app.houses.Property;
+import app.houses.Share;
 
 public class Player {
     private static int actualId = 0;
@@ -25,16 +26,13 @@ public class Player {
     public int getSkip() {
         return this.skip;
     }
-
-    public void setSkip(int skip) {
-        this.skip = skip;
-    }
+    public void setSkip(int value){this.skip = value;}
 
     public void payPlayer(int value, Player receiver) {
         if (value >= this.balance) {
             this.balance = 0;
             receiver.receive(this.balance);
-            notifica();
+            notifies();
         } else {
             this.balance -= value;
             receiver.receive(value);
@@ -44,7 +42,7 @@ public class Player {
     public void pay(int value) {
         this.balance -= value;
         if (this.balance <= 0){
-            notifica();
+            notifies();
         }
     }
 
@@ -72,12 +70,10 @@ public class Player {
         }
     }
 
-    public void skipTurn(){
-        setSkip(this.skip++);
-    }
+    public void notifies(){}
 
-    public void notifica(){
-
+    public void skipTurn(int n){
+        this.setSkip(n);
     }
 
     @Override

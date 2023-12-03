@@ -1,6 +1,7 @@
-package app.model;
+package app.houses;
 
 import app.interfaces.IHouse;
+import app.model.Player;
 
 public class Share implements IHouse{
 

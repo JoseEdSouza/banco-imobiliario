@@ -1,5 +1,6 @@
 package app.model;
 
+import app.interfaces.ScreenObserver;
 import app.utils.OsUtils;
 
 import java.io.IOException;
@@ -51,6 +52,4 @@ public class Screen{
         }
         draw();
     }
-
-
 }

@@ -1,9 +1,19 @@
-package app.model;
+package app.houses;
 
 
 import app.interfaces.IHouse;
+import app.model.Player;
 
 public class GainEvent implements IHouse {
+
+    public GainEvent(){
+
+    }
+
+    @Override
+    public String getName() {
+        return "Ganho";
+    }
 
     public void takeAction(Player player)
     {
