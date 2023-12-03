@@ -39,14 +39,9 @@ public class Share implements IHouse{
 
     @Override
     public void takeAction(Player player) {
-        if(getOwner() == null){
+        if(getOwner() == null) {
             player.buyShare(this);
             setOwner(player);
-        }
-        else {
-            if(getOwner() != player){
-                player.payPlayer(calculateProfit(5), owner);
-            }
         }
     }
 
@@ -55,7 +50,7 @@ public class Share implements IHouse{
         return "Share{" +
                 "name='" + name + '\'' +
                 ", shareValue=" + shareValue +
-                ", playerId=" + owner.getId() +
+                ", playerId=" + owner+
                 '}';
     }
 }

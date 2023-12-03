@@ -1,5 +1,6 @@
 package app.model;
 
+import app.houses.HouseFactory;
 import app.interfaces.IHouse;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,6 +9,7 @@ import java.util.Map;
 public class Board {
     private static Board instance  = null;
     public ArrayList<IHouse> houses;
+    public HouseFactory factory;
     public Map<Integer, Integer> playerPosition;
     private Board(){
         this.houses = new ArrayList<IHouse>();
