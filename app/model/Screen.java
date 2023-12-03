@@ -5,7 +5,7 @@ import app.utils.OsUtils;
 
 import java.io.IOException;
 
-public class Screen implements ScreenObserver {
+public class Screen{
     private String content;
     private String info;
     private String options;
@@ -51,11 +51,5 @@ public class Screen implements ScreenObserver {
         } catch (IOException ignored) {
         }
         draw();
-    }
-
-
-    @Override
-    public void updateState() {
-
     }
 }

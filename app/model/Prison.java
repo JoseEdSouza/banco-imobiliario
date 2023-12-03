@@ -10,7 +10,7 @@ public class Prison extends IHouse {
     }
 
     @Override
-    public void setSkipTurn(int i, Player player) {
+    public void setSkipTurn(Player player) {
 
     }
 

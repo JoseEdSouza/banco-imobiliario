@@ -11,7 +11,7 @@ public class Game implements ObservedGame {
     private List<ScreenObserver> observers = new List;
     ArrayList<Player>players;
     Board board;
-
+    // TODO - instancia Screen: implementar função
     public Game(){
         this.players = new ArrayList<Player>();
         this.board = null;
