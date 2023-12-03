@@ -1,17 +1,42 @@
 package app.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import app.interfaces.IHouse;
 
-public class Prison extends BoardHouse{
+public class Prison extends IHouse {
     public Prison(){}
     @Override
-    public void takeAction(Player player) {
-        player.setSkip(3);
+    public boolean isPrison() {
+        return true;
     }
 
     @Override
+    public void setSkipTurn(int i, Player player) {
+
+    }
+
+    @Override
+    public String getName() {
+        return null;
+    }
+
+    @Override
+    public void takeAction(Player player) {}
+
+    @Override
+    public void applyGain(Player player) {}
+
+    @Override
+    public void apllyMiss(Player player) {}
+
+    @Override
+    public boolean isHoliday() {
+        return false;
+    }
+    @Override
+    public void applyLuckyOrUnluck(Player player) {}
+
+    @Override
     public String toString() {
-        return "Fique ";
+        return null;
     }
 }

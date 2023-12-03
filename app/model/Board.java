@@ -1,16 +1,16 @@
 package app.model;
 
-import app.interfaces.House;
+import app.interfaces.IHouse;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Board {
     private static Board instance  = null;
-    public ArrayList<House> houses;
+    public ArrayList<IHouse> houses;
     public Map<Integer, Integer> playerPosition;
     private Board(){
-        this.houses = new ArrayList<House>();
+        this.houses = new ArrayList<IHouse>();
         this.playerPosition = new HashMap<Integer, Integer>();
     };
 
@@ -34,7 +34,7 @@ public class Board {
     @Override
     public String toString() {
         String aux = "";
-        for (House e: houses) {
+        for (IHouse e: houses) {
             for(int i=0; i<playerPosition.size(); i++){
                 if (!playerPosition.containsKey(i)) {
                     playerPosition.put(i, 0);

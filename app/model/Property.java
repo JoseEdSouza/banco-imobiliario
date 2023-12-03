@@ -1,10 +1,10 @@
 package app.model;
 
-import app.interfaces.House;
+import app.interfaces.IHouse;
 import app.utils.Level;
 import app.utils.Type;
 
-public class Property extends BoardHouse {
+public class Property extends IHouse {
     private String name;
     private int rentBase;
     private int upgradeValue;
@@ -37,38 +37,63 @@ public class Property extends BoardHouse {
         return idPlayer;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setRentBase(int rentBase) {
-        this.rentBase = rentBase;
-    }
-
-    public void setUpgradeValue(int upgradeValue) {
-        this.upgradeValue = upgradeValue;
-    }
-
     public void setIdPlayer(int idPlayer) {
         this.idPlayer = idPlayer;
-    }
-
-    public void updateLevel(){
-        level = level.NextLevel();
     }
 
     public int rentalValue(){
         return (rentBase * type.type * level.level);
     }
 
-    @Override
-    public void takeAction(Player player) {
-
-    }
-
     public String toString() {
         return  "\n\nName = " + name +
                 "\nUpgradeValue = " + upgradeValue +
                 "\nidPlayer = " + idPlayer;
+    }
+
+    @Override
+    public void takeAction(Player player) {
+        if(getIdPlayer() == 0){
+            player.buyProperty(this);
+            setIdPlayer(player.getId());
+        }
+        else{
+            if(getIdPlayer() == player.getId()){
+                this.level = this.level.NextLevel();
+                player.pay(getUpgradeValue());
+            }
+            else {
+            }
+        }
+    }
+
+    @Override
+    public void applyGain(Player player) {
+
+    }
+
+    @Override
+    public void apllyMiss(Player player) {
+
+    }
+
+    @Override
+    public boolean isHoliday() {
+        return false;
+    }
+
+    @Override
+    public boolean isPrison() {
+        return false;
+    }
+
+    @Override
+    public void setSkipTurn(int i, Player player) {
+
+    }
+
+    @Override
+    public void applyLuckyOrUnluck(Player player) {
+
     }
 }

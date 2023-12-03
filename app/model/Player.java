@@ -4,14 +4,15 @@ public class Player {
     private static int actualId = 0;
     private final int id;
     private final String name;
-    private int balance = 0;
-    private int skip = 0;
+    private int balance;
+    private int skip;
 
 
     public Player(String name) {
         this.name = name;
         this.id = actualId + 1 ;
         this.skip = 0;
+        this.balance = 0;
         actualId++;
     }
 
@@ -28,7 +29,7 @@ public class Player {
         if (value >= this.balance) {
             this.balance = 0;
             receiver.receive(this.balance);
-            notifica();
+            notifies();
         } else {
             this.balance -= value;
             receiver.receive(value);
@@ -38,7 +39,7 @@ public class Player {
     public void pay(int value) {
         this.balance -= value;
         if (this.balance <= 0){
-            notifica();
+            notifies();
         }
     }
 
@@ -56,8 +57,10 @@ public class Player {
         }
     }
 
-    public void notifies(){
+    public void notifies(){}
 
+    public void skipTurn(int n){
+        this.setSkip(n);
     }
 
     @Override
