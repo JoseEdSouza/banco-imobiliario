@@ -21,11 +21,20 @@ public class Board {
         }
         return Board.instance;
     }
+
+    public void addHouse(IHouse house){
+        this.houses.add(house);
+    }
+
+    public void addPlayer(Player player){
+        this.playerPosition.put(player.getId(), 0);
+    }
+
     public void updatePosition(int position, Player player){
         int playerId = player.getId();
         int currentPosition = playerPosition.get(playerId);
-        if (currentPosition + position >= 40){
-            playerPosition.replace(playerId, position - 40);
+        if (currentPosition + position >= houses.size()){
+            playerPosition.replace(playerId, position - houses.size());
         }
         playerPosition.replace(playerId, position);
     }
@@ -33,24 +42,16 @@ public class Board {
     // TODO - make this get name from house
     @Override
     public String toString() {
-        String aux = "";
-        // TODO - inverter verificação houses -> playerID
-        for (IHouse e: houses) {
-            for(int i=0; i<playerPosition.size(); i++){
-                if (!playerPosition.containsKey(i)) {
-                    playerPosition.put(i, 0);
+        String result = "";
+        for(IHouse house : houses){
+            String aux = "";
+            for(int i=0; i<playerPosition.size(); i ++){
+                if(houses.indexOf(house) == playerPosition.get(i+1)){
+                    aux += (i + 1) + " ";
                 }
-                if(houses.indexOf(e) == playerPosition.get(i)){
-                    aux += e.getName() + " : " + i + "\n";
-                }
-
-
             }
+            result += "\n" + house.getName() + ": " + aux;
         }
-        return aux;
-        // casa 1: 1
-        // casa 1: 2
-        // casa 2: 0
-        // casa 3: 0
+        return result;
     }
 }

@@ -6,13 +6,14 @@ import app.model.Player;
 
 public class GainEvent implements IHouse {
 
-    public GainEvent(){
-
+    public String name;
+    public GainEvent(String name){
+        this.name = name;
     }
 
     @Override
     public String getName() {
-        return "Ganho";
+        return this.name;
     }
 
     public void takeAction(Player player)
