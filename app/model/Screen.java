@@ -4,7 +4,7 @@ import app.utils.OsUtils;
 
 import java.io.IOException;
 
-public class Screen {
+public class Screen{
     private String content;
     private String info;
     private String options;

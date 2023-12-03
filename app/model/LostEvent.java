@@ -1,8 +1,6 @@
 package app.model;
 
-import app.interfaces.House;
-
-public class LostEvent extends BoardHouse {
+public class LostEvent{
 
     public void takeAction(Player player) {
         player.pay(200000);

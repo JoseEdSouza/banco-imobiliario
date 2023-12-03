@@ -4,14 +4,15 @@ public class Player {
     private static int actualId = 0;
     private final int id;
     private final String name;
-    private int balance = 0;
-    private int skip = 0;
+    private int balance;
+    private int skip;
 
 
     public Player(String name) {
         this.name = name;
         this.id = actualId + 1 ;
         this.skip = 0;
+        this.balance = 0;
         actualId++;
     }
 
@@ -21,6 +22,10 @@ public class Player {
 
     public int getSkip() {
         return this.skip;
+    }
+
+    public void setSkip(int skip) {
+        this.skip = skip;
     }
 
     public void payPlayer(int value, Player receiver) {
@@ -53,6 +58,10 @@ public class Player {
             p.setIdPlayer(this.id);
             this.balance -= p.rentalValue();
         }
+    }
+
+    public void skipTurn(){
+        setSkip(this.skip++);
     }
 
     public void notifica(){
