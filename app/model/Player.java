@@ -19,6 +19,10 @@ public class Player {
         actualId++;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public int getId() {
         return this.id;
     }

@@ -3,8 +3,12 @@ package app;
 import app.houses.Property;
 import app.interfaces.IHouse;
 import app.model.Board;
+import app.model.Game;
 import app.model.Player;
 import app.utils.Type;
+
+import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args){
@@ -18,15 +22,10 @@ public class Main {
         board.addHouse(propriedade2);
         board.addHouse(propriedade3);
 
-        Player player = new Player("Erick");
-        Player player2 = new Player("Ericcles");
+        Game game = new Game();
 
-        board.addPlayer(player);
-        board.addPlayer(player2);
+        game.addPlayer();
 
-        board.updatePosition(2, player);
-        board.updatePosition(2, player2);
-
-        System.out.println(board.toString());
+        System.out.println(game.getBoard().toString());
     }
 }
