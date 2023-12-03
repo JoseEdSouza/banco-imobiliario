@@ -4,7 +4,7 @@ import app.houses.Property;
 import app.houses.Share;
 
 public class Player {
-    private static int actualId = 0;
+    private static int actualId = 1;
     private final int id;
     private final String name;
     private int balance;
@@ -13,10 +13,9 @@ public class Player {
 
     public Player(String name) {
         this.name = name;
-        this.id = actualId + 1 ;
+        this.id = actualId ++;
         this.skip = 0;
         this.balance = 0;
-        actualId++;
     }
 
     public String getName() {
