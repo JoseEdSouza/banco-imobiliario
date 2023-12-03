@@ -1,8 +1,10 @@
 package app.model;
 
 import app.controller.InputController;
+import app.houses.Property;
 import app.interfaces.ObservedGame;
 import app.interfaces.ScreenObserver;
+import app.utils.Type;
 
 import java.util.*;
 
@@ -15,6 +17,7 @@ public class Game implements ObservedGame {
 
     public Game() {
         this.observers = new ArrayList<>();
+        addPlayer();
     }
 
     public Board getBoard() {
@@ -88,7 +91,6 @@ public class Game implements ObservedGame {
 
         screen.flush()
                 .setContent(result.toString())
-                .setInfo(list.toString())
                 .update();
 
         ArrayList<Player> auxArray = new ArrayList<>();
@@ -96,10 +98,18 @@ public class Game implements ObservedGame {
             auxArray.add(getPlayerById((Integer) e.getKey()));
         }
         players = auxArray;
+        playerAction();
     }
 
     public void playerAction() {
+        Property propriedade1 = new Property("Rua tananan", 1000, 500, 1000, Type.MEDIUM);
+        Property propriedade2 = new Property("Rua pimbas", 800, 600, 200, Type.BASIC);
+        Property propriedade3 = new Property("Rua champolas", 800, 600, 200, Type.BASIC);
 
+        getBoard().addHouse(propriedade1);
+        getBoard().addHouse(propriedade2);
+        getBoard().addHouse(propriedade3);
+            screen.flush().setContent(getBoard().toString()).update();
     }
 
     @Override
