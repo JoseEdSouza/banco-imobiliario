@@ -10,8 +10,7 @@ public class Screen{
     private String info;
     private String options;
 
-
-    Screen(){
+    public Screen(){
         content = "";
         options = "";
         info = "";
@@ -42,14 +41,24 @@ public class Screen{
         System.out.println(content);
         System.out.println(options);
         System.out.println(info);
-        System.out.println("> ");
+        System.out.print("> ");
     }
 
-    public void update() {
+    public Screen update() {
         try {
             clear();
         } catch (IOException ignored) {
         }
         draw();
+
+        return this;
+    }
+
+    public Screen flush(){
+        this.content = "";
+        this.info = "";
+        this.options = "";
+
+        return this;
     }
 }
