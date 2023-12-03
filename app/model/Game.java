@@ -1,16 +1,16 @@
 package app.model;
 
+import app.controller.InputController;
 import app.interfaces.ObservedGame;
 import app.interfaces.ScreenObserver;
 
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Game implements ObservedGame {
     private ArrayList<ScreenObserver> observers;
     private final Board board = Board.getInstance();
-    private final ArrayList<Player> playersTurns = new ArrayList<Player>();
+    private ArrayList<Player> players = new ArrayList<Player>();
+    private final InputController inputController = new InputController();
     private final Screen screen = new Screen();
 
     public Game() {
@@ -22,36 +22,39 @@ public class Game implements ObservedGame {
     }
 
     public ArrayList<Player> getPlayersTurns() {
-        return playersTurns;
+        return players;
     }
 
-    public void addPlayersTurns(Player player) {
-        this.playersTurns.add(player);
+    private Player getPlayerById(int id){
+        for(Player player : players){
+            if(player.getId() == id){
+                return player;
+            }
+        }
+        return null;
     }
 
     public void addPlayer() {
-        Scanner scanner = new Scanner(System.in);
         String input = "";
         int playerCount = 1;
-        while (playerCount < 6) {
+        while (playerCount <= 6) {
             screen.flush();
             screen.setContent("Adicionar um Jogador ? (s/n)");
             screen.update();
-            input = scanner.nextLine();
+            input = inputController.scan().toString();
 
             if (input.equals("s")) {
                 screen.flush();
                 screen.setContent("Escolha um nome para o jogador " + playerCount);
                 screen.update();
-                input = scanner.nextLine();
+                input = inputController.scan().toString();
 
                 Player player = new Player(input);
 
-
-                System.out.println("Jogador " + player.getName() + " criado");
+                System.out.println("Jogador " + player.getName() + " adicionado");
 
                 board.addPlayer(player);
-                addPlayersTurns(player);
+                players.add(player);
                 playerCount++;
             } else {
                 break;
@@ -66,14 +69,33 @@ public class Game implements ObservedGame {
     }
 
     public void playerTurn() {
-        int auxDice = 0;
-        ArrayList<Player> playersActualTurn = new ArrayList<Player>();
-        Scanner scanner = new Scanner(System.in);
+        //return string
+        StringBuilder result = new StringBuilder();
 
-        for (int i = 0; i < playersTurns.size(); i++) {
-            System.out.println("Jogador " + playersTurns.get(i) + ", deseja lançar os dados para decidir a sua vez de jogar ? (s/n)");
+        //Save new order of players turn
+        HashMap<Integer, Integer> playersDice = new HashMap<>();
 
+        for (Player playersTurn : players) {
+            playersDice.put(playersTurn.getId(), rollDice());
+            result.append("O jogador ")
+                    .append(playersTurn.getName())
+                    .append(" tirou ")
+                    .append(playersDice.get(playersTurn.getId()))
+                    .append("\n");
         }
+        List<Map.Entry<Integer, Integer>> list = new ArrayList<>(playersDice.entrySet());
+        list.sort((e1, e2) -> e2.getValue().compareTo(e1.getValue()));
+
+        screen.flush()
+                .setContent(result.toString())
+                .setInfo(list.toString())
+                .update();
+
+        ArrayList<Player> auxArray = new ArrayList<>();
+        for(Map.Entry e : list){
+            auxArray.add(getPlayerById((Integer) e.getKey()));
+        }
+        players = auxArray;
     }
 
     public void playerAction() {

@@ -16,16 +16,19 @@ public class Screen{
         info = "";
     }
 
-    public void setContent(String content) {
+    public Screen setContent(String content) {
         this.content = content;
+        return this;
     }
 
-    public void setInfo(String info) {
+    public Screen setInfo(String info) {
         this.info = info;
+        return this;
     }
 
-    public void setOptions(String options) {
+    public Screen setOptions(String options) {
         this.options = options;
+        return this;
     }
 
     private void clear() throws IOException {
