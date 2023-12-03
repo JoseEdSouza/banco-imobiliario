@@ -38,8 +38,6 @@ public class Board {
         }
         playerPosition.replace(playerId, position);
     }
-
-    // TODO - make this get name from house
     @Override
     public String toString() {
         String result = "";

@@ -10,12 +10,11 @@ import java.util.Scanner;
 public class Game implements ObservedGame {
     private ArrayList<ScreenObserver> observers;
     private final Board board = Board.getInstance();
-    private final ArrayList<Player> playersTurns;
+    private final ArrayList<Player> playersTurns = new ArrayList<Player>();
     private final Screen screen = new Screen();
 
     public Game() {
-        this.observers = new ArrayList<ScreenObserver>();
-        this.playersTurns = new ArrayList<Player>();
+        this.observers = new ArrayList<>();
     }
 
     public Board getBoard() {

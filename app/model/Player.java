@@ -59,7 +59,7 @@ public class Player {
             System.out.println("Sem dinheiro o suficiente.");
         }
         else{
-            p.setIdPlayer(this.id);
+            p.setOwner(this);
             this.balance -= p.getBuyValue();
         }
     }
@@ -69,7 +69,7 @@ public class Player {
             System.out.println("Sem dinheiro o suficiente.");
         }
         else{
-            s.setPlayerId(this.id);
+            s.setOwner(this);
             this.balance -= s.getBuyValue();
         }
     }
