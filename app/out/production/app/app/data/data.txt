@@ -1,0 +1,40 @@
+GEInicio
+PPAçude do Cedro
+PPPraça do Leão
+SHCompanhia Petrolifera
+PPPraça da Estação
+PPCentro Cultural Rachel de Querioz
+LSSorte/Revés
+PPChalé da Pedra
+GERestituição de Imposto de renda - Evento Ganho
+PPRua Basilio Pinto
+PVPrisao
+LSSorte/Revés
+PPRua Rui Barbosa
+PPAv Plácido Castelo
+SHEnel
+PPAv José Caetano Almeida
+LEReceita Federal
+PPAv josé de Freitas Queiroz
+PPBairro Centro
+PPBairro Combate
+HDFeriado
+PPBairro Cedro
+SHCagece
+SHCompanhia de Mineração
+LSSorte/Revés
+PPBairro Campo Velho
+PPBairro Planalto Renascer
+LSSorte/Revés
+PPPedra do Cruzeiro
+SHPontocom
+PREntre no Camburão
+PPPedra da Galinha Chova
+LSSorte/Revés
+PPPedra da Baleia
+PPPedra Faladeira
+PPLagoa dos Monólitos
+SHCrédito de carbono
+PPParque de Exposição Valdir de Couto
+LSSorte/Revés
+PPSantuário N.Sra Imaculada

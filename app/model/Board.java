@@ -8,12 +8,13 @@ import java.util.Map;
 
 public class Board {
     private static Board instance  = null;
+    public HouseFactory factory = new HouseFactory();
+
     public ArrayList<IHouse> houses;
-    public HouseFactory factory;
     public Map<Integer, Integer> playerPosition;
     private Board(){
-        this.houses = new ArrayList<IHouse>();
-        this.playerPosition = new HashMap<Integer, Integer>();
+        this.houses = factory.createHouse();
+        this.playerPosition = new HashMap<>();
     };
 
     public static Board getInstance(){

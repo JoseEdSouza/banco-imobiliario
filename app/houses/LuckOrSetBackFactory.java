@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class LuckOrSetBackFactory{
     private final ArrayList<String> message = new ArrayList<String>();
     private final ArrayList<Integer> values = new ArrayList<Integer>();
-    public void createMessage(){
+    public ArrayList<String> createMessage(){
         message.add("Investimento em terrenos lunares: Receba R$ 50.000,00 da NASA");
         message.add("Gaste R$ 50.000 para adequar suas propriedades a um parque temático");
         message.add("Vizinho produtor de filmes: Receba R$ 15.000,00 pelos direitos de filmagem da sua casa");
@@ -37,14 +37,14 @@ public class LuckOrSetBackFactory{
         message.add("VScode travou! Invista R$ 70.000 em um RTX 4060 para resolver");
         message.add("Construiu um labirinto no jardim: Receba R$ 25.000,00 pelos ingressos");
         message.add("Pneu do carro furou: Pague R$ 25.000 pelo concerto");
-
+        return message;
     }
-    public void createValues(){
+    public ArrayList<Integer> createValues(){
         values.add(50000);
         values.add(50000);
         values.add(15000);
-        values.add(11.000);
-        values.add(10.000);
+        values.add(11000);
+        values.add(10000);
         values.add(17000);
         values.add(20000);
         values.add(70000);
@@ -53,10 +53,10 @@ public class LuckOrSetBackFactory{
         values.add(75000);
         values.add(80000);
         values.add(25000);
-        values.add(10.000);
+        values.add(10000);
         values.add(60000);
         values.add(30000);
-        values.add(alguel);// rrr
+        values.add(0);// aluguel
         values.add(40500);
         values.add(15000);
         values.add(11000);
@@ -70,10 +70,6 @@ public class LuckOrSetBackFactory{
         values.add(70000);
         values.add(25000);
         values.add(25000);
+        return values;
     }
-
-    public ArrayList<IHouse> getMessage(){
-        return cards;
-    }
-
 }

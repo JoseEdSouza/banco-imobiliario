@@ -28,9 +28,9 @@ public class Game implements ObservedGame {
         return players;
     }
 
-    private Player getPlayerById(int id){
-        for(Player player : players){
-            if(player.getId() == id){
+    private Player getPlayerById(int id) {
+        for (Player player : players) {
+            if (player.getId() == id) {
                 return player;
             }
         }
@@ -94,7 +94,7 @@ public class Game implements ObservedGame {
                 .update();
 
         ArrayList<Player> auxArray = new ArrayList<>();
-        for(Map.Entry e : list){
+        for (Map.Entry e : list) {
             auxArray.add(getPlayerById((Integer) e.getKey()));
         }
         players = auxArray;
@@ -102,14 +102,7 @@ public class Game implements ObservedGame {
     }
 
     public void playerAction() {
-        Property propriedade1 = new Property("Rua tananan", 1000, 500, 1000, Type.MEDIUM);
-        Property propriedade2 = new Property("Rua pimbas", 800, 600, 200, Type.BASIC);
-        Property propriedade3 = new Property("Rua champolas", 800, 600, 200, Type.BASIC);
-
-        getBoard().addHouse(propriedade1);
-        getBoard().addHouse(propriedade2);
-        getBoard().addHouse(propriedade3);
-            screen.flush().setContent(getBoard().toString()).update();
+        screen.flush().setContent(getBoard().toString()).update();
     }
 
     @Override
