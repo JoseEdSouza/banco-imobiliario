@@ -1,10 +1,11 @@
 package app.model;
 
-import app.interfaces.House;
+import app.interfaces.IHouse;
 
-public class GainEvent implements House {
+public class GainEvent{
 
-    public void takeAction(Player player){
+    public void takeAction(Player player)
+    {
         player.receive(200000);
     }
 

@@ -1,10 +1,8 @@
 package app.model;
 
-import app.interfaces.House;
+import app.interfaces.IHouse;
 
-import java.util.Queue;
-
-public class LuckyOrSetback implements House {
+public class LuckyOrSetback{
 
     public void takeAction(Player player) {
     }
