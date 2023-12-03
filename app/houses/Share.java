@@ -8,13 +8,13 @@ public class Share implements IHouse{
     public String name;
     public int buyValue;
     public int shareValue;
-    public int playerId;
+    public Player owner;
 
     public Share(String name, int buyValue, int shareValue) {
         this.name = name;
         this.buyValue = buyValue;
         this.shareValue = shareValue;
-        this.playerId = 0;
+        this.owner = null;
     }
 
     public String getName() {
@@ -25,12 +25,12 @@ public class Share implements IHouse{
         return buyValue;
     }
 
-    public int getPlayerId() {
-        return playerId;
+    public Player getOwner() {
+        return owner;
     }
 
-    public void setPlayerId(int playerId) {
-        this.playerId = playerId;
+    public void setOwner(Player player) {
+        this.owner = player;
     }
 
     public int calculateProfit(int diceValue){
@@ -39,12 +39,13 @@ public class Share implements IHouse{
 
     @Override
     public void takeAction(Player player) {
-        if(getPlayerId() == 0){
+        if(getOwner() == null){
             player.buyShare(this);
-            setPlayerId(player.getId());
+            setOwner(player);
         }
         else {
-            if(getPlayerId() != player.getId()){
+            if(getOwner() != player){
+                player.payPlayer(calculateProfit(5), owner);
             }
         }
     }
@@ -54,7 +55,7 @@ public class Share implements IHouse{
         return "Share{" +
                 "name='" + name + '\'' +
                 ", shareValue=" + shareValue +
-                ", playerId=" + playerId +
+                ", playerId=" + owner.getId() +
                 '}';
     }
 }

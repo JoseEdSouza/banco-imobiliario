@@ -7,8 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Game implements ObservedGame {
-    private ArrayList<ScreenObserver> observers = new ArrayList<ScreenObserver>();
+public class Game {
     ArrayList<Player>players;
     Board board;
     // TODO - instancia Screen: implementar função
@@ -24,20 +23,5 @@ public class Game implements ObservedGame {
     public int RollDice(){
         Random random = new Random();
         return random.nextInt(2, 12);
-    }
-
-    @Override
-    public void addObserver(ScreenObserver screenObserver) {
-
-    }
-
-    @Override
-    public void removeObserver(ScreenObserver screenObserver) {
-
-    }
-
-    @Override
-    public void notifies() {
-
     }
 }

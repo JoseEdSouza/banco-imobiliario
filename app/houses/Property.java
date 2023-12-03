@@ -10,7 +10,7 @@ public class Property implements IHouse {
     private final int buyValue;
     private final int rentBase;
     private final int upgradeValue;
-    private int idPlayer;
+    private Player owner;
     private Level level;
     private final Type type;
 
@@ -19,7 +19,7 @@ public class Property implements IHouse {
         this.buyValue = buyValue;
         this.rentBase = rentBase;
         this.upgradeValue = upgradeValue;
-        this.idPlayer = 0;
+        this.owner = null;
         this.type = type;
         level = Level.BASIC;
     }
@@ -40,12 +40,12 @@ public class Property implements IHouse {
         return upgradeValue;
     }
 
-    public int getIdPlayer() {
-        return idPlayer;
+    public Player getOwner() {
+        return this.owner;
     }
 
-    public void setIdPlayer(int idPlayer) {
-        this.idPlayer = idPlayer;
+    public void setOwner(Player player) {
+        this.owner = player;
     }
 
     public int rentalValue(){
@@ -55,14 +55,18 @@ public class Property implements IHouse {
     public String toString() {
         return  "\n\nName = " + name +
                 "\nUpgradeValue = " + upgradeValue +
-                "\nidPlayer = " + idPlayer;
+                "\nidPlayer = " + owner.getId();
     }
 
     @Override
     public void takeAction(Player player) {
-        if(getIdPlayer() == 0){
+        if(getOwner() == null){
             player.buyProperty(this);
-            setIdPlayer(player.getId());
+            setOwner(player);
+        } else if (this.owner != player){
+            player.payPlayer(this.rentalValue(), owner);
+        } else {
+            return;
         }
     }
 }
