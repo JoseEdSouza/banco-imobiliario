@@ -50,7 +50,7 @@ public class Share implements IHouse{
         return "Share{" +
                 "name='" + name + '\'' +
                 ", shareValue=" + shareValue +
-                ", playerId=" + owner.getId() +
+                ", playerId=" + owner+
                 '}';
     }
 }

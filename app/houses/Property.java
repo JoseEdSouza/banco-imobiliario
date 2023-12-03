@@ -55,7 +55,7 @@ public class Property implements IHouse {
     public String toString() {
         return  "\n\nName = " + name +
                 "\nUpgradeValue = " + upgradeValue +
-                "\nidPlayer = " + owner.getId();
+                "\nidPlayer = " + owner;
     }
 
     @Override
