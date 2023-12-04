@@ -18,7 +18,7 @@ public class Player implements IObservedPlayer {
         this.name = name;
         this.id = actualId ++;
         this.skip = 0;
-        this.balance = 0;
+        this.balance = 2558000;
     }
 
     public String getName() {
@@ -32,6 +32,11 @@ public class Player implements IObservedPlayer {
     public int getSkip() {
         return this.skip;
     }
+
+    public int getBalance() {
+        return balance;
+    }
+
     public void setSkip(int value){this.skip = value;}
 
     public void payPlayer(int value, Player receiver) {
@@ -88,11 +93,6 @@ public class Player implements IObservedPlayer {
                 ", skip=" + skip +
                 " }";
     }
-
-    public int getBalance() {
-        return balance;
-    }
-
     @Override
     public void notifies() {
         gameObserver.updateState(this);
