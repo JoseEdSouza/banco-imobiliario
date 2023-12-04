@@ -17,6 +17,11 @@ public class Holiday implements IHouse {
     }
 
     @Override
+    public int getTypeHouse() {
+        return 6;
+    }
+
+    @Override
     public String toString(){
         return "Hoje é Feriado. Aproveite para descansar.";
     }

@@ -21,6 +21,11 @@ public class GainEvent implements IHouse {
         player.receive(200000);
     }
 
+    @Override
+    public int getTypeHouse() {
+        return 3;
+    }
+
     public String toString() {
         return "Restituição de Imposto do Imposto de Renda. Ganhe R$ 200.000,00";
     }

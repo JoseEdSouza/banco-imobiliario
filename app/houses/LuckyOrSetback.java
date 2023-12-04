@@ -28,6 +28,11 @@ public class LuckyOrSetback implements IHouse {
 
     }
 
+    @Override
+    public int getTypeHouse() {
+        return 5;
+    }
+
     public String toString() {
         return "";
     }

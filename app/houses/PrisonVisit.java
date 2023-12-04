@@ -18,6 +18,11 @@ public class PrisonVisit implements IHouse {
     }
 
     @Override
+    public int getTypeHouse() {
+        return 7;
+    }
+
+    @Override
     public String toString(){
         return "Aproveite para visitar o seu amigo prisioneiro";
     }

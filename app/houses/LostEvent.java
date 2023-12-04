@@ -18,6 +18,11 @@ public class LostEvent implements IHouse {
         player.pay(200000);
     }
 
+    @Override
+    public int getTypeHouse() {
+        return 4;
+    }
+
     public String toString() {
         return "Receita federal. Pague R$ 200.000,00";
     }

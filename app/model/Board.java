@@ -25,12 +25,12 @@ public class Board {
         return Board.instance;
     }
 
-    public void addHouse(IHouse house){
-        this.houses.add(house);
-    }
-
     public void addPlayer(Player player){
         this.playerPosition.put(player.getId(), 0);
+    }
+
+    public int getPosition(int playerId){
+        return playerPosition.get(playerId);
     }
 
     public void updatePosition(int position, Player player){
@@ -41,6 +41,7 @@ public class Board {
         }
         playerPosition.replace(playerId, position);
     }
+
     @Override
     public String toString() {
         String result = "";

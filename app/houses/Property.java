@@ -69,4 +69,9 @@ public class Property implements IHouse {
             return;
         }
     }
+
+    @Override
+    public int getTypeHouse() {
+        return 1;
+    }
 }

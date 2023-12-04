@@ -17,6 +17,11 @@ public class Prison implements IHouse {
     }
 
     @Override
+    public int getTypeHouse() {
+        return 8;
+    }
+
+    @Override
     public String toString() {
         return null;
     }

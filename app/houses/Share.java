@@ -46,6 +46,11 @@ public class Share implements IHouse{
     }
 
     @Override
+    public int getTypeHouse() {
+        return 2;
+    }
+
+    @Override
     public String toString() {
         return "Share{" +
                 "name='" + name + '\'' +

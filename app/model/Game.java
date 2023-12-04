@@ -2,6 +2,7 @@ package app.model;
 
 import app.controller.InputController;
 import app.houses.Property;
+import app.interfaces.IHouse;
 import app.interfaces.ObservedGame;
 import app.interfaces.ScreenObserver;
 import app.utils.Type;
@@ -56,7 +57,6 @@ public class Game implements ObservedGame {
 
                 System.out.println("Jogador " + player.getName() + " adicionado");
 
-                board.addPlayer(player);
                 players.add(player);
                 playerCount++;
             } else {
@@ -96,13 +96,33 @@ public class Game implements ObservedGame {
         ArrayList<Player> auxArray = new ArrayList<>();
         for (Map.Entry e : list) {
             auxArray.add(getPlayerById((Integer) e.getKey()));
+            getBoard().addPlayer(Objects.requireNonNull(getPlayerById((Integer) e.getKey())));
         }
         players = auxArray;
         playerAction();
     }
 
     public void playerAction() {
-        screen.flush().setContent(getBoard().toString()).update();
+        while (true){
+            for (Player player : players){
+                screen.flush()
+                        .setContent(getBoard().toString())
+                        .setOptions(getOptions(getBoard().houses.get(getBoard().getPosition(player.getId()))))
+                        .setInfo("\nÉ a vez do jogador " + player.getName())
+                        .update();
+                break;
+            }
+            break;
+        }
+    }
+
+    public String getOptions(IHouse house){
+        return switch (house.getTypeHouse()) {
+            case 1 -> "\nOpções[ comprar propriedade, ver propridade, pular turno]";
+            case 2 -> "\nOpções[ comprar ação, ver ação, pular turno]";
+            case 3, 4, 5, 6, 7, 8 -> "\nOpções[]";
+            default -> throw new IllegalStateException("Unexpected value: " + house.getTypeHouse());
+        };
     }
 
     @Override
