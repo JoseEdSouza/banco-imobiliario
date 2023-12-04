@@ -1,23 +1,18 @@
 package app.model;
 
 import app.controller.InputController;
-import app.houses.Property;
+import app.interfaces.IGameObserver;
 import app.interfaces.IHouse;
-import app.interfaces.ObservedGame;
-import app.interfaces.ScreenObserver;
-import app.utils.Type;
 
 import java.util.*;
 
-public class Game implements ObservedGame {
-    private ArrayList<ScreenObserver> observers;
+public class Game implements IGameObserver {
     private final Board board = Board.getInstance();
-    private ArrayList<Player> players = new ArrayList<Player>();
+    private ArrayList<Player> players = new ArrayList<>();
     private final InputController inputController = new InputController();
     private final Screen screen = new Screen();
 
     public Game() {
-        this.observers = new ArrayList<>();
         addPlayer();
     }
 
@@ -108,7 +103,6 @@ public class Game implements ObservedGame {
             int auxDice = 0;
             int auxInt = 0;
             for (Player player : players){
-
                 screen.flush()
                         .setContent(getBoard().toString())
                         .setOptions("\nOpções[Lançar Dados]")
@@ -162,7 +156,7 @@ public class Game implements ObservedGame {
         screen.setContent("O jogador " + players.get(0).getName() + " vanceu!!!");
     }
 
-    public String getOptions(IHouse house){
+    public String getOptions(IHouse house) {
         return switch (house.getTypeHouse()) {
             case 1 -> "Opções[ comprar propriedade(clique 1), ver propridade(clique 2), pular turno(clique 3), ver saldo(clique 4)]";
             case 2 -> "Opções[ comprar ação(clique 1), ver ação(clique 2), pular turno(clique 3), ver saldo(clique 4)]";
@@ -221,17 +215,10 @@ public class Game implements ObservedGame {
     }
 
     @Override
-    public void addObserver(ScreenObserver screenObserver) {
-
-    }
-
-    @Override
-    public void removeObserver(ScreenObserver screenObserver) {
-
-    }
-
-    @Override
-    public void notifies() {
-
+    public void updateState(Player player) {
+        if (player.getBalance() >= 0) {
+            players.remove(player);
+            this.board.playerPosition.remove(player.getId());
+        }
     }
 }
