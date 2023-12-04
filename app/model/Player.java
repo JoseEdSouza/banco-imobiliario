@@ -15,7 +15,7 @@ public class Player {
         this.name = name;
         this.id = actualId ++;
         this.skip = 0;
-        this.balance = 0;
+        this.balance = 2558000;
     }
 
     public String getName() {
@@ -29,6 +29,11 @@ public class Player {
     public int getSkip() {
         return this.skip;
     }
+
+    public int getBalance() {
+        return balance;
+    }
+
     public void setSkip(int value){this.skip = value;}
 
     public void payPlayer(int value, Player receiver) {

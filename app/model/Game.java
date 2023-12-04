@@ -103,26 +103,104 @@ public class Game implements ObservedGame {
     }
 
     public void playerAction() {
-        while (true){
+        while (isGameOver()){
+            String input = "";
+            int auxDice = 0;
+            int auxInt = 0;
             for (Player player : players){
+
                 screen.flush()
                         .setContent(getBoard().toString())
-                        .setOptions(getOptions(getBoard().houses.get(getBoard().getPosition(player.getId()))))
-                        .setInfo("\nÉ a vez do jogador " + player.getName())
+                        .setOptions("\nOpções[Lançar Dados]")
+                        .setInfo("\nÉ a vez do jogador " + player.getName() + ", lançe os dados (escreva lançar)")
                         .update();
-                break;
+
+                input = inputController.scan().toString();
+                auxDice = rollDice();
+
+                System.out.println("\nO jogador " + player.getName() + " andou " + auxDice + " casas");
+                getBoard().updatePosition(auxDice, player);
+
+                IHouse actualHouse = getBoard().houses.get(getBoard().getPosition(player.getId()));
+
+                screen.flush()
+                        .setContent("O jogador " + player.getName() +" caiu em " + actualHouse.getName())
+                        .setOptions(getOptions(actualHouse))
+                        .update();
+
+                while (true){
+                    input = "";
+                    System.out.println("\nO jogador " + player.getName() + ", deseja realizar alguma ação ?");
+                    input = inputController.scan().toString();
+                    auxInt = inputController.scan().toInt(input);
+
+                    if(input.equals("1") || input.equals("3")){
+                        takeAction(actualHouse,player, auxInt);
+                        break;
+                    }
+                    else{
+                        takeAction(actualHouse,player, auxInt);
+                    }
+                }
             }
-            break;
         }
+        screen.setContent("O jogador " + players.get(0).getName() + " vanceu!!!");
     }
 
     public String getOptions(IHouse house){
         return switch (house.getTypeHouse()) {
-            case 1 -> "\nOpções[ comprar propriedade, ver propridade, pular turno]";
-            case 2 -> "\nOpções[ comprar ação, ver ação, pular turno]";
-            case 3, 4, 5, 6, 7, 8 -> "\nOpções[]";
+            case 1 -> "Opções[ comprar propriedade(clique 1), ver propridade(clique 2), pular turno(clique 3), ver saldo(clique 4)]";
+            case 2 -> "Opções[ comprar ação(clique 1), ver ação(clique 2), pular turno(clique 3), ver saldo(clique 4)]";
+            case 3, 4, 5, 6, 7, 8 -> "Opções[pular turno(clique 3), ver saldo(clique 4)]";
             default -> throw new IllegalStateException("Unexpected value: " + house.getTypeHouse());
         };
+    }
+
+    public void takeAction(IHouse house, Player player, int choice) {
+        if (house.getTypeHouse() == 1) {
+            if (choice == 1) {
+                house.takeAction(player);
+                System.out.println("O jogador " + player.getName() + " comprou a propriedade " + house.getName());
+            } else if (choice == 2) {
+                System.out.println(house.toString());
+            } else if (choice == 3) {
+                player.setSkip(player.getSkip() + 1);
+                System.out.println("O jogador " + player.getName() + " passou a vez");
+            } else if (choice == 4) {
+                System.out.println(player.getBalance());
+            } else {
+                System.out.println("Comando inválido");
+            }
+        } else if (house.getTypeHouse() == 2) {
+            if (choice == 1) {
+                house.takeAction(player);
+                System.out.println("O jogador " + player.getName() + " comprou a ação " + house.getName());
+            } else if (choice == 2) {
+                System.out.println(house.toString());
+            } else if (choice == 3) {
+                player.setSkip(player.getSkip() + 1);
+                System.out.println("O jogador " + player.getName() + " passou a vez");
+            } else if (choice == 4) {
+                System.out.println("Saldo atual: " + player.getBalance());
+            } else {
+                System.out.println("Comando inválido");
+            }
+        } else if (house.getTypeHouse() > 2 || house.getTypeHouse() < 8) {
+            house.takeAction(player);
+            System.out.println(house.toString());
+
+            if (choice == 4) {
+                System.out.println("Saldo atual: " + player.getBalance());
+            }
+        }
+        else{
+            house.takeAction(player);
+            System.out.println(house.toString());
+        }
+    }
+
+    public boolean isGameOver(){
+        return players.size() != 1;
     }
 
     @Override

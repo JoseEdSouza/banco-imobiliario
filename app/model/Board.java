@@ -36,10 +36,12 @@ public class Board {
     public void updatePosition(int position, Player player){
         int playerId = player.getId();
         int currentPosition = playerPosition.get(playerId);
+
         if (currentPosition + position >= houses.size()){
-            playerPosition.replace(playerId, position - houses.size());
+            playerPosition.replace(playerId, currentPosition + position - houses.size());
+            return;
         }
-        playerPosition.replace(playerId, position);
+        playerPosition.replace(playerId, currentPosition + position);
     }
 
     @Override
