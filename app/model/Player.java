@@ -2,8 +2,11 @@ package app.model;
 
 import app.houses.Property;
 import app.houses.Share;
+import app.interfaces.IGameObserver;
+import app.interfaces.IObservedPlayer;
 
-public class Player {
+public class Player implements IObservedPlayer {
+    private Game gameObserver;
     private static int actualId = 1;
     private final int id;
     private final String name;
@@ -72,9 +75,6 @@ public class Player {
             this.balance -= s.getBuyValue();
         }
     }
-
-    public void notifies(){}
-
     public void skipTurn(int n){
         this.setSkip(n);
     }
@@ -87,5 +87,14 @@ public class Player {
                 ", balance=" + balance +
                 ", skip=" + skip +
                 " }";
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    @Override
+    public void notifies() {
+        gameObserver.updateState(this);
     }
 }
