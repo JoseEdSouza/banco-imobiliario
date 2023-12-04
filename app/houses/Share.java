@@ -52,10 +52,8 @@ public class Share implements IHouse{
 
     @Override
     public String toString() {
-        return "Share{" +
-                "name='" + name + '\'' +
-                ", shareValue=" + shareValue +
-                ", playerId=" + owner+
-                '}';
+        return "\n\nName = " + name +
+                "\nUpgradeValue = " + shareValue +
+                "\nidPlayer = " + owner;
     }
 }

@@ -122,9 +122,10 @@ public class Game implements IGameObserver {
                         .setOptions(getOptions(actualHouse))
                         .update();
 
+                screen.setInfo("\nO jogador " + player.getName() + ", deseja realizar alguma ação ?");
+
                 while (true){
                     input = "";
-                    screen.setInfo("\nO jogador " + player.getName() + ", deseja realizar alguma ação ?");
                     input = inputController.scan().toString();
                     auxInt = inputController.scan().toInt(input);
 
