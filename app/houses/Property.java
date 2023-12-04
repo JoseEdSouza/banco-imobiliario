@@ -66,7 +66,7 @@ public class Property implements IHouse {
         } else if (this.owner != player){
             player.payPlayer(this.rentalValue(), owner);
         } else {
-            return;
+            level = level.NextLevel();
         }
     }
 
