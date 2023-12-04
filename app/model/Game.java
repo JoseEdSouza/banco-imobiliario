@@ -130,16 +130,31 @@ public class Game implements ObservedGame {
 
                 while (true){
                     input = "";
-                    System.out.println("\nO jogador " + player.getName() + ", deseja realizar alguma ação ?");
+                    screen.setInfo("\nO jogador " + player.getName() + ", deseja realizar alguma ação ?");
                     input = inputController.scan().toString();
                     auxInt = inputController.scan().toInt(input);
 
-                    if(input.equals("1") || input.equals("3")){
+                    if(actualHouse.getTypeHouse() == 1 || actualHouse.getTypeHouse() == 2){
+                        if(input.equals("1") || input.equals("3")){
+                            takeAction(actualHouse,player, auxInt);
+                            break;
+                        }
+                        else{
+                            takeAction(actualHouse,player, auxInt);
+                        }
+                    }
+                    else if(actualHouse.getTypeHouse() > 2 || actualHouse.getTypeHouse() < 8){
+                        if(input.equals("4")){
+                            takeAction(actualHouse,player, auxInt);
+                        }
+                        else{
+                            takeAction(actualHouse,player, auxInt);
+                            break;
+                        }
+                    }
+                    else {
                         takeAction(actualHouse,player, auxInt);
                         break;
-                    }
-                    else{
-                        takeAction(actualHouse,player, auxInt);
                     }
                 }
             }
@@ -157,46 +172,48 @@ public class Game implements ObservedGame {
     }
 
     public void takeAction(IHouse house, Player player, int choice) {
+        String message = "";
         if (house.getTypeHouse() == 1) {
             if (choice == 1) {
                 house.takeAction(player);
-                System.out.println("O jogador " + player.getName() + " comprou a propriedade " + house.getName());
+                message = ("O jogador " + player.getName() + " comprou a propriedade " + house.getName());
             } else if (choice == 2) {
-                System.out.println(house.toString());
+                message = (house.toString());
             } else if (choice == 3) {
                 player.setSkip(player.getSkip() + 1);
-                System.out.println("O jogador " + player.getName() + " passou a vez");
+                message = ("O jogador " + player.getName() + " passou a vez");
             } else if (choice == 4) {
-                System.out.println(player.getBalance());
+                message = String.valueOf((player.getBalance()));
             } else {
-                System.out.println("Comando inválido");
+                message = ("Comando inválido");
             }
         } else if (house.getTypeHouse() == 2) {
             if (choice == 1) {
                 house.takeAction(player);
-                System.out.println("O jogador " + player.getName() + " comprou a ação " + house.getName());
+                message = ("O jogador " + player.getName() + " comprou a ação " + house.getName());
             } else if (choice == 2) {
-                System.out.println(house.toString());
+                message = (house.toString());
             } else if (choice == 3) {
                 player.setSkip(player.getSkip() + 1);
-                System.out.println("O jogador " + player.getName() + " passou a vez");
+                message = ("O jogador " + player.getName() + " passou a vez");
             } else if (choice == 4) {
-                System.out.println("Saldo atual: " + player.getBalance());
+                message = ("Saldo atual: " + player.getBalance());
             } else {
-                System.out.println("Comando inválido");
+                message = ("Comando inválido");
             }
         } else if (house.getTypeHouse() > 2 || house.getTypeHouse() < 8) {
             house.takeAction(player);
-            System.out.println(house.toString());
+            message = (house.toString());
 
             if (choice == 4) {
-                System.out.println("Saldo atual: " + player.getBalance());
+                message = ("Saldo atual: " + player.getBalance());
             }
         }
         else{
             house.takeAction(player);
-            System.out.println(house.toString());
+            message = (house.toString());
         }
+        screen.setInfo(message).update();
     }
 
     public boolean isGameOver(){
